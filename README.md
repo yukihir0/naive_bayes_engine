@@ -1,4 +1,4 @@
-# NaiveBayesEngine
+# NaiveBayesEngine [![Build Status](https://travis-ci.org/yukihir0/naive_bayes_engine.png?branch=master)](https://travis-ci.org/yukihir0/naive_bayes_engine)
 
 'naive_bayes_engine' provides feature for classifying document by naive bayes algorithm.
 
