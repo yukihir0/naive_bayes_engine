@@ -1,29 +1,39 @@
 # NaiveBayesEngine
 
-TODO: Write a gem description
+'naive_bayes_engine' provides feature for classifying document by naive bayes algorithm.
 
-## Installation
+## Requirements
+
+- ruby 1.9
+
+## Install
 
 Add this line to your application's Gemfile:
 
-    gem 'naive_bayes_engine'
+```
+gem 'naive_bayes_engine', :github => 'yukihir0/naive_bayes_engine'
+```
 
 And then execute:
 
-    $ bundle
+```
+% bundle install
+```
 
-Or install it yourself as:
+## How to use
 
-    $ gem install naive_bayes_engine
+```
+engine = NaiveBayesEngine.new
 
-## Usage
+engine.train('this is a spam document', 'spam')
+engine.train('this is a ham document', 'ham')
 
-TODO: Write usage instructions here
+category = engine.classify('this is a maybe spam document')
+puts category
+```
 
-## Contributing
+For more information, please see [here](https://github.com/yukihir0/naive_bayes_engine/blob/master/sample/main.rb).
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+## License
+
+Copyright &copy; 2013 yukihir0
