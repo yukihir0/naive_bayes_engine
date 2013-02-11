@@ -4,31 +4,10 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe NaiveBayesEngine do
     context 'uninitialized' do
         describe '#initialize' do
-            context 'when no type input' do
-                it 'NAIVE_BAYES algorithm' do
+            context 'when call' do
+                it 'NaiveBayes' do
                     engine = NaiveBayesEngine.new
                     engine.instance_eval('@algorithm').instance_of?(NaiveBayes).should be_true
-                end
-            end
-
-            context 'when NAIVE_BAYES input' do
-                it 'NAIVE_BAYES algorithm' do
-                    engine = NaiveBayesEngine.new(type: NaiveBayesEngine::NAIVE_BAYES)
-                    engine.instance_eval('@algorithm').instance_of?(NaiveBayes).should be_true
-                end
-            end
-            
-            context 'when COMPLEMENTAL_NAIVE_BAYES input' do
-                it 'COMPLEMENTAL_NAIVE_BAYES algorithm' do
-                    engine = NaiveBayesEngine.new(type: NaiveBayesEngine::COMPLEMENTAL_NAIVE_BAYES)
-                    engine.instance_eval('@algorithm').instance_of?(ComplementalNaiveBayes).should be_true
-                end
-            end
-
-            context 'invalid type input' do
-                it 'raise error' do
-                    expect { engine = NaiveBayesEngine.new(type: 'invalid algorithm type')
-                    }.to raise_error(RuntimeError, NaiveBayesEngine::INVALID_ALGORITHM_ERROR)
                 end
             end
         end
@@ -39,6 +18,25 @@ describe NaiveBayesEngine do
             @category = 'test_category'
             @doc      = %w(test doc)
             @engine   = NaiveBayesEngine.new
+        end
+
+        describe '#to_naive' do
+            context 'when call' do
+                it 'NaiveBayes' do
+                    @engine.to_naive
+                    @engine.instance_eval('@algorithm').instance_of?(NaiveBayes).should be_true
+                end
+            end
+        end
+
+        describe '#to_complemental' do
+            context 'when call' do
+                it 'ComplementalNaiveBayes' do
+                    @engine.to_complemental
+                    @engine.instance_eval('@algorithm').instance_of?(ComplementalNaiveBayes).should be_true
+                end
+            end
+
         end
 
         describe '#train' do

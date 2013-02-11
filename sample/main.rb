@@ -14,8 +14,8 @@ end
 
 
 # initialize engine
-naive_engine        = NaiveBayesEngine.new(type: NaiveBayesEngine::NAIVE_BAYES)
-complemental_engine = NaiveBayesEngine.new(type: NaiveBayesEngine::COMPLEMENTAL_NAIVE_BAYES)
+naive_engine        = NaiveBayesEngine.new.to_naive
+complemental_engine = NaiveBayesEngine.new.to_complemental
 
 # train data
 spam_doc = %w(bad document contains normal sentence)

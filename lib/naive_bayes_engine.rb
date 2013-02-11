@@ -6,25 +6,24 @@ require 'algorithm/complemental_naive_bayes'
 class NaiveBayesEngine
     
     # error message
-    NIL_CATEGORY_ERROR      = 'nil or empty category is inputted.'
     NOT_ARRAY_DOC_ERROR     = 'not instance of Array doc is inputted.'
-    INVALID_ALGORITHM_ERROR = 'invalid algorithm is inputted.'
+    NIL_CATEGORY_ERROR      = 'nil or empty category is inputted.'
   
-    # algorithm type
-    NAIVE_BAYES              = 'naive bayes'
-    COMPLEMENTAL_NAIVE_BAYES = 'complemental naive bayes'
-
     public
-    def initialize(options = {type: NAIVE_BAYES})
-        case options[:type]
-        when NAIVE_BAYES
-            @algorithm = NaiveBayes.new
-        when COMPLEMENTAL_NAIVE_BAYES
-            @algorithm = ComplementalNaiveBayes.new
-        else
-            raise INVALID_ALGORITHM_ERROR
-        end
+    def initialize
+        to_naive
     end
+
+    def to_naive
+        @algorithm = NaiveBayes.new
+        self
+    end
+
+    def to_complemental
+        @algorithm = ComplementalNaiveBayes.new
+        self
+    end
+
 
     def train(doc, category)
         raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
