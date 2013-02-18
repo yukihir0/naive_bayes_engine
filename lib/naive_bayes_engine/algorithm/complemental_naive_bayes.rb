@@ -1,7 +1,7 @@
 # coding: utf-8
-require 'algorithm/naive_bayes'
+require 'naive_bayes_engine/algorithm/naive_bayes'
 
-module NaiveBayesEngineAlgorithm
+module Algorithm
     class ComplementalNaiveBayes < NaiveBayes
         public
         def score(doc, category)

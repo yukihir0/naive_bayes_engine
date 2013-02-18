@@ -1,13 +1,13 @@
 # coding: utf-8
 require File.expand_path('spec/spec_helper')
-include NaiveBayesEngineAlgorithm
+include Algorithm
 
-describe NaiveBayes do
+describe ComplementalNaiveBayes do
     context 'uninitialized' do
         describe '#initialize' do
             context 'when no input' do
                 it 'initialize' do
-                    expect { algorithm = NaiveBayes.new
+                    expect { algorithm = ComplementalNaiveBayes.new
                     }.to_not raise_error
                 end
             end
@@ -18,7 +18,7 @@ describe NaiveBayes do
         before(:each) do
             @category  = 'test_category'
             @doc       = %w(test doc)
-            @algorithm = NaiveBayes.new
+            @algorithm = ComplementalNaiveBayes.new
         end
 
         describe '#train' do
@@ -82,7 +82,7 @@ describe NaiveBayes do
             @category  = 'test02'
             @doc       = %w(test02 doc)
 
-            @algorithm = NaiveBayes.new
+            @algorithm = ComplementalNaiveBayes.new
             @algorithm.train(@train_doc, @train_category)
         end
 
@@ -122,18 +122,18 @@ describe NaiveBayes do
             end
 
             context 'when doc, category input' do
-                it '-2.079' do
-                    score = @algorithm.score(@doc, @train_category)
-                    score.should be_within(0.001).of(-2.079)
+                it '0.0' do
+                    score = @algorithm.score(@train_category, @doc)
+                    score.should == 0.0 
                 end
             end
         end
 
         describe '#score_all' do
             context 'when doc input' do
-                it '{test01 => -2.079}' do
+                it '{test01 => 0.0}' do
                     scores = @algorithm.score_all(@doc)
-                    scores[@train_category].should be_within(0.001).of(-2.079)
+                    scores[@train_category].should == 0.0
                 end
             end
         end
@@ -156,8 +156,8 @@ describe NaiveBayes do
             @train_doc_02      = %w(test02 doc)
             @category  = 'test03'
             @doc       = %w(test01 text)
-            
-            @algorithm = NaiveBayes.new
+
+            @algorithm = ComplementalNaiveBayes.new
             @algorithm.train(@train_doc_01, @train_category_01)
             @algorithm.train(@train_doc_02, @train_category_02)
         end
@@ -199,26 +199,26 @@ describe NaiveBayes do
             end
 
             context 'when doc, category_01 input' do
-                it '-3.218' do
+                it '{test01 => 2.525}' do
                     score = @algorithm.score(@doc, @train_category_01)
-                    score.should be_within(0.001).of(-3.218)
+                    score.should be_within(0.001).of(2.525)
                 end
             end
 
             context 'when doc, category_02 input' do
-                it '-3.912' do
+                it '{test02 => 1.832}' do
                     score = @algorithm.score(@doc, @train_category_02)
-                    score.should be_within(0.001).of(-3.912)
+                    score.should be_within(0.001).of(1.832)
                 end
             end
         end
 
         describe '#score_all' do
             context 'when doc input' do
-                it '{test01 => -3.218, test02 -> -3.912}' do
+                it '{test01 => 2.525, test02 => 1.832}' do
                     scores = @algorithm.score_all(@doc)
-                    scores[@train_category_01].should be_within(0.001).of(-3.218)
-                    scores[@train_category_02].should be_within(0.001).of(-3.912)
+                    scores[@train_category_01].should be_within(0.001).of(2.525)
+                    scores[@train_category_02].should be_within(0.001).of(1.832)
                 end
             end
         end
