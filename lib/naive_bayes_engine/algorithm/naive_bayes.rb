@@ -1,6 +1,6 @@
 # coding: utf-8
 
-module Algorithm
+module NaiveBayesEngineAlgorithm
     class NaiveBayes
         public
         def initialize

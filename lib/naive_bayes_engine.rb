@@ -4,7 +4,7 @@ require 'naive_bayes_engine/algorithm/naive_bayes'
 require 'naive_bayes_engine/algorithm/complemental_naive_bayes'
 
 class NaiveBayesEngine
-    include Algorithm
+    include NaiveBayesEngineAlgorithm
 
     # error message
     NOT_ARRAY_DOC_ERROR = 'not instance of Array doc is inputted.'
