@@ -4,60 +4,60 @@ require 'naive_bayes_engine/algorithm/naive_bayes'
 require 'naive_bayes_engine/algorithm/complemental_naive_bayes'
 
 class NaiveBayesEngine
-    include NaiveBayesEngineAlgorithm
+  include NaiveBayesEngineAlgorithm
 
-    # error message
-    NOT_ARRAY_DOC_ERROR = 'not instance of Array doc is inputted.'
-    NIL_CATEGORY_ERROR  = 'nil or empty category is inputted.'
-  
-    public
-    def initialize
-        to_naive
-    end
+  # error message
+  NOT_ARRAY_DOC_ERROR = 'not instance of Array doc is inputted.'
+  NIL_CATEGORY_ERROR  = 'nil or empty category is inputted.'
 
-    def to_naive
-        @algorithm = NaiveBayes.new
-        self
-    end
+  public
+  def initialize
+    to_naive
+  end
 
-    def to_complemental
-        @algorithm = ComplementalNaiveBayes.new
-        self
-    end
+  def to_naive
+    @algorithm = NaiveBayes.new
+    self
+  end
+
+  def to_complemental
+    @algorithm = ComplementalNaiveBayes.new
+    self
+  end
 
 
-    def train(doc, category)
-        raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
-        raise NIL_CATEGORY_ERROR  if nil_or_empty?(category)
-        
-        @algorithm.train(doc, category)
-    end
+  def train(doc, category)
+    raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
+    raise NIL_CATEGORY_ERROR  if nil_or_empty?(category)
 
-    def score(doc, category)
-        raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
-        raise NIL_CATEGORY_ERROR  if nil_or_empty?(category)
+    @algorithm.train(doc, category)
+  end
 
-        @algorithm.score(doc, category)
-    end
+  def score(doc, category)
+    raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
+    raise NIL_CATEGORY_ERROR  if nil_or_empty?(category)
 
-    def score_all(doc)
-        raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
+    @algorithm.score(doc, category)
+  end
 
-        @algorithm.score_all(doc)
-    end
+  def score_all(doc)
+    raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
 
-    def classify(doc)
-        raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
+    @algorithm.score_all(doc)
+  end
 
-        @algorithm.classify(doc)
-    end
+  def classify(doc)
+    raise NOT_ARRAY_DOC_ERROR if not_instance_of_array?(doc)
 
-    private
-    def nil_or_empty?(category)
-        category.nil? || category.empty?
-    end
+    @algorithm.classify(doc)
+  end
 
-    def not_instance_of_array?(doc)
-        !doc.instance_of?(Array)
-    end
+  private
+  def nil_or_empty?(category)
+    category.nil? || category.empty?
+  end
+
+  def not_instance_of_array?(doc)
+    !doc.instance_of?(Array)
+  end
 end

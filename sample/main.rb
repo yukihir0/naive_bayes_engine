@@ -2,14 +2,14 @@
 require 'naive_bayes_engine'
 
 def print_score(title, category, score_all)
-    header = "----- #{title} -----"
-    footer = '-' * header.length, ''
+  header = "----- #{title} -----"
+  footer = '-' * header.length, ''
 
-    puts header
-    puts "classified category is '#{category}'"
-    puts "spam score = #{score_all['spam']}"
-    puts "ham  score = #{score_all['ham']}"
-    puts footer
+  puts header
+  puts "classified category is '#{category}'"
+  puts "spam score = #{score_all['spam']}"
+  puts "ham  score = #{score_all['ham']}"
+  puts footer
 end
 
 
