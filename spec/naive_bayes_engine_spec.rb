@@ -7,7 +7,7 @@ describe NaiveBayesEngine do
             context 'when call' do
                 it 'NaiveBayes' do
                     engine = NaiveBayesEngine.new
-                    engine.instance_eval('@algorithm').instance_of?(NaiveBayes).should be_true
+                    engine.instance_eval('@algorithm').instance_of?(NaiveBayes).should be_truthy
                 end
             end
         end
@@ -24,7 +24,7 @@ describe NaiveBayesEngine do
             context 'when call' do
                 it 'NaiveBayes' do
                     @engine.to_naive
-                    @engine.instance_eval('@algorithm').instance_of?(NaiveBayes).should be_true
+                    @engine.instance_eval('@algorithm').instance_of?(NaiveBayes).should be_truthy
                 end
             end
         end
@@ -33,7 +33,7 @@ describe NaiveBayesEngine do
             context 'when call' do
                 it 'ComplementalNaiveBayes' do
                     @engine.to_complemental
-                    @engine.instance_eval('@algorithm').instance_of?(ComplementalNaiveBayes).should be_true
+                    @engine.instance_eval('@algorithm').instance_of?(ComplementalNaiveBayes).should be_truthy
                 end
             end
 
