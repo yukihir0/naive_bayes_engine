@@ -1,4 +1,4 @@
-# NaiveBayesEngine [![Build Status](https://travis-ci.org/yukihir0/naive_bayes_engine.png?branch=master)](https://travis-ci.org/yukihir0/naive_bayes_engine)
+# NaiveBayesEngine [![Build Status](https://travis-ci.org/yukihir0/naive_bayes_engine.png?branch=master)](https://travis-ci.org/yukihir0/naive_bayes_engine) [![Coverage Status](https://coveralls.io/repos/yukihir0/naive_bayes_engine/badge.svg?branch=master&service=github)](https://coveralls.io/github/yukihir0/naive_bayes_engine?branch=master)
 
 'naive_bayes_engine' provides feature for classifying document by naive bayes algorithm.
 
